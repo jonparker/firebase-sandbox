@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <script src='https://cdn.firebase.com/v0/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+  <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase-auth-client.js'></script>
+	
+	<script type="text/javascript">
+	
+		var page = {};
+		
+		$(document).ready(function()
+		{
+			var fb = new Firebase('https://petitionm.firebaseio.com/');
+			var authClient = new FirebaseAuthClient(fb, function(error, data) {
+			  if (error) {
+				// an error occurred while attempting login
+				console.log(error);
+			  } else if (data) {
+				// user authenticated with Firebase
+				console.log('User ID: ' + data.id + ', Provider: ' + data.provider);
+			  } else {
+				// user is logged out
+			  }
+			});
+			
+			page.authClient = authClient;
+			page.fb = fb;
+			
+			$("#login").click(Login);
+			$("#logout").click(Logout);
+			$("#saveMessage").click(SaveMessage);
+		});
+		
+		fb.child('text').on('child_added', function(snapshot) {
+			
+		});
+	  
+		function Logout()
+		{
+			page.authClient.logout();
+		}
+		
+		function Login()
+		{
+			page.authClient.login('password', { email: 'test@test.com', password: 'Password1'});
+		}
+		
+		function SaveMessage()
+		{
+			var message = $("#message").val();
+			page.fb.child('text').set({ 'message': message });
+		}
+		
+		function ShowMessages(messages)
+		{
+			$("#messages").append('<span>' + messages + '</span>');
+		}
+	</script>
+  </head>
+<body>
+	<div id="messages">
+	</div>
+	<input type="button" value="Login" id="login" />
+	<input type="button" value="Logout" id="logout" />
+	<input type="text" id="message" />
+	<input type="button" value="Save" id="saveMessage" />
+</body>
+</html>
