@@ -2,7 +2,8 @@
   <head>
     <script src='https://cdn.firebase.com/v0/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
-  <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase-auth-client.js'></script>
+    <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase-auth-client.js'></script>
+    <script type='text/javascript' src='http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js'></script>
 	
 	<script type="text/javascript">
 	
@@ -27,6 +28,7 @@
 			page.fb = fb;
 			
 			$("#login").click(Login);
+            $("#facebookLogin").click(FacebookLogin);
 			$("#logout").click(Logout);
 			$("#saveMessage").click(SaveMessage);
 		});
@@ -40,6 +42,11 @@
 			page.authClient.logout();
 		}
 		
+        function FacebookLogin()
+        {
+            page.authClient.login('facebook');
+        }
+        
 		function Login()
 		{
 			page.authClient.login('password', { email: 'test@test.com', password: 'Password1'});
@@ -61,6 +68,7 @@
 	<div id="messages">
 	</div>
 	<input type="button" value="Login" id="login" />
+    <input type="button" value="Facebook Login" id="facebookLogin" />
 	<input type="button" value="Logout" id="logout" />
 	<input type="text" id="message" />
 	<input type="button" value="Save" id="saveMessage" />
