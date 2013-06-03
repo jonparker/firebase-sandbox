@@ -37,7 +37,7 @@
 		$(document).ready(function()
 		{
 			var firebase = new Firebase('https://petitionm.firebaseio.com/');
-			var authClient = new FirebaseAuthClient(fb, function(error, data) {
+			var authClient = new FirebaseAuthClient(firebase, function(error, data) {
 			  if (error) {
 				// an error occurred while attempting login
 				console.log(error);
