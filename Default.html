@@ -7,11 +7,36 @@
 	
 	<script type="text/javascript">
 	
-		var page = {};
-		
+        var page = {};
+        
+		var viewModel =
+        {
+            email: ko.observable(),
+            password: ko.observable(),
+            message: ko.observable(),
+            
+            login: function()
+            {
+                page.authClient.login('password', { email: this.email(), password: this.password() });
+            },
+            facebookLogin: function()
+            {
+                page.authClient.login('facebook');
+            },
+            logout: function()
+            {
+                page.authClient.logout();
+            },
+            saveMessage: function(text)
+            {
+                page.firebase.child('text').set({ 'message': this.message() });
+            },
+            messages: ko.observableArray()
+        };
+		        
 		$(document).ready(function()
 		{
-			var fb = new Firebase('https://petitionm.firebaseio.com/');
+			var firebase = new Firebase('https://petitionm.firebaseio.com/');
 			var authClient = new FirebaseAuthClient(fb, function(error, data) {
 			  if (error) {
 				// an error occurred while attempting login
@@ -25,52 +50,30 @@
 			});
 			
 			page.authClient = authClient;
-			page.fb = fb;
-			
-			$("#login").click(Login);
-            $("#facebookLogin").click(FacebookLogin);
-			$("#logout").click(Logout);
-			$("#saveMessage").click(SaveMessage);
+			page.firebase = firebase;
+            
+            ko.applyBindings(viewModel);
 		});
 		
+        /*
 		fb.child('text').on('child_added', function(snapshot) {
 			
 		});
-	  
-		function Logout()
-		{
-			page.authClient.logout();
-		}
-		
-        function FacebookLogin()
-        {
-            page.authClient.login('facebook');
-        }
-        
-		function Login()
-		{
-			page.authClient.login('password', { email: 'test@test.com', password: 'Password1'});
-		}
-		
-		function SaveMessage()
-		{
-			var message = $("#message").val();
-			page.fb.child('text').set({ 'message': message });
-		}
-		
+                    
 		function ShowMessages(messages)
 		{
 			$("#messages").append('<span>' + messages + '</span>');
 		}
+                     */
 	</script>
   </head>
 <body>
 	<div id="messages">
 	</div>
-	<input type="button" value="Login" id="login" />
-    <input type="button" value="Facebook Login" id="facebookLogin" />
-	<input type="button" value="Logout" id="logout" />
-	<input type="text" id="message" />
-	<input type="button" value="Save" id="saveMessage" />
+	<input type="button" value="Login" data-bind="click: login" />
+    <input type="button" value="Facebook Login" data-bind="click: facebookLogin" />
+	<input type="button" value="Logout" data-bind="click: logout" />
+	<input type="text" id="message" data-bind="value: message" />
+	<input type="button" value="Save" data-bind="click: saveMessage" />
 </body>
 </html>
