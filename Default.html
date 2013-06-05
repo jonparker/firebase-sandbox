@@ -33,11 +33,8 @@
             {
                 page.authClient.logout();
             };
-            self.saveMessage = function(text)
-            {
-                //page.firebase.child('text').set({ 'message': this.message() });
-            };
-            self.messages = ko.observableArray();
+            
+            self.petitions = ko.observableArray();
         };
 		        
 		$(document).ready(function()
@@ -67,7 +64,8 @@
 
 			page.firebase.child('Petitions').on('child_added', function(snapshot) 
 				{
-
+					var msgData = snapshot.val();
+  					page.viewModel.petitions.push(msgData.child("Title"))
 				}
 			);
 		});
@@ -75,9 +73,6 @@
 	</script>
   </head>
 <body>
-	<div id="messages">
-	</div>
-	
 	<h4>Login status: <span data-bind="text: LogginStatus" /></h4>
 	<label for="username">Email</label>
 	<input type="text" data-bind="value: email" />
@@ -89,7 +84,11 @@
 	<input type="button" value="Login" data-bind="click: login" />
     <input type="button" value="Facebook Login" data-bind="click: facebookLogin" />
 	<input type="button" value="Logout" data-bind="click: logout" />
-	<input type="text" id="message" data-bind="value: message" />
-	<input type="button" value="Save" data-bind="click: saveMessage" />
+	
+	<br/>
+	<h4>Petitions</h4>
+	<ul data-bind="foreach: petitions">
+		<li data-bind="text: title"></li>
+	</ul>
 </body>
 </html>
