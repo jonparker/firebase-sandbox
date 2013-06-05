@@ -72,7 +72,7 @@
 			page.firebase.child('Petitions').on('child_removed', function(snapshot) 
 				{
 					var msgData = snapshot.val();
-					var petitions = page.viewModel.petitions;
+					var petitions = page.viewModel.petitions();
 					for(index = 0; index < petitions.length; ++index)
 					{
 						if (petitions[index].ID == msgData.ID)
