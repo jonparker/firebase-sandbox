@@ -65,7 +65,18 @@
 			page.firebase.child('Petitions').on('child_added', function(snapshot) 
 				{
 					var msgData = snapshot.val();
-  					page.viewModel.petitions.push({ "Title" : msgData.Title, "Description" : msgData.Description, URL: msgData.URL })
+  					page.viewModel.petitions.push({ ID: msgData.ID, "Title" : msgData.Title, "Description" : msgData.Description, URL: msgData.URL })
+				}
+			);
+
+			page.firebase.child('Petitions').on('child_removed', function(snapshot) 
+				{
+					var msgData = snapshot.val();
+					foreach(var petition in page.viewModel.petitions)
+					{
+						if (petition.ID == msgData.ID)
+							page.viewModel.petitions.remove(petition);
+					}
 				}
 			);
 		});
@@ -88,7 +99,7 @@
 	<br/>
 	<h4>Petitions</h4>
 	<ul data-bind="foreach: petitions">
-		<li><h4 data-bind="text: Title"></h4><p data-bind="text: Description"></p></li>
+		<li><h4 data-bind="text: Title"></h4><p data-bind="text: Description"></p><a data-bind="href: URL">more</a></li>
 	</ul>
 </body>
 </html>
