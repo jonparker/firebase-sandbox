@@ -9,7 +9,7 @@
 	
         var page = {};
         
-		var viewModel =
+        var viewModel =
         {
             email: ko.observable(),
             password: ko.observable(),
@@ -29,7 +29,7 @@
             },
             saveMessage: function(text)
             {
-                page.firebase.child('text').set({ 'message': this.message() });
+                //page.firebase.child('text').set({ 'message': this.message() });
             },
             messages: ko.observableArray()
         };
@@ -55,21 +55,26 @@
             ko.applyBindings(viewModel);
 		});
 		
-        /*
-		fb.child('text').on('child_added', function(snapshot) {
-			
-		});
+		fb.child('Petitions').on('child_added', function(snapshot) 
+			{
+
+			}
+		);
                     
-		function ShowMessages(messages)
-		{
-			$("#messages").append('<span>' + messages + '</span>');
-		}
-                     */
+		
 	</script>
   </head>
 <body>
 	<div id="messages">
 	</div>
+	
+	<label for="username">Email</label>
+	<input type="text" value="email" data-bind="value: email" />
+	<br/>
+	<label for="password">Password</label>
+	<input type="text" value="password" data-bind="value: password" />
+	<br/>
+
 	<input type="button" value="Login" data-bind="click: login" />
     <input type="button" value="Facebook Login" data-bind="click: facebookLogin" />
 	<input type="button" value="Logout" data-bind="click: logout" />
