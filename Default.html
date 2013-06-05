@@ -14,6 +14,11 @@
             email: ko.observable(),
             password: ko.observable(),
             message: ko.observable(),
+            isloggedIn: ko.observable(false),
+            LogginStatus: ko.computed(function()
+            {
+            	return this.isloggedIn() ? "Logged in" : "Not logged in";
+            }),
             
             login: function()
             {
@@ -40,10 +45,13 @@
 			var authClient = new FirebaseAuthClient(firebase, function(error, data) {
 			  if (error) {
 				// an error occurred while attempting login
+				viewModel.isloggedIn(false);
+
 				console.log(error);
 			  } else if (data) {
 				// user authenticated with Firebase
 				console.log('User ID: ' + data.id + ', Provider: ' + data.provider);
+				viewModel.isloggedIn(true);
 			  } else {
 				// user is logged out
 			  }
@@ -68,6 +76,7 @@
 	<div id="messages">
 	</div>
 	
+	<h4>Login status: <span data-bind="value: LogginStatus" />
 	<label for="username">Email</label>
 	<input type="text" value="email" data-bind="value: email" />
 	<br/>
