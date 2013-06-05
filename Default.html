@@ -57,6 +57,12 @@
 				// user is logged out
 			  }
 			});
+
+			page.firebase.child('Petitions').on('child_added', function(snapshot) 
+				{
+
+				}
+			);
 			
 			page.authClient = authClient;
 			page.firebase = firebase;
@@ -64,13 +70,6 @@
 
             ko.applyBindings(page.viewModel);
 		});
-		
-		page.firebase.child('Petitions').on('child_added', function(snapshot) 
-			{
-
-			}
-		);
-                    
 		
 	</script>
   </head>
