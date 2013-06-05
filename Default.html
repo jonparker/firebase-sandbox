@@ -9,34 +9,34 @@
 	
         var page = {};
         
-        var viewModel =
+        var viewModel = function()
         {
-            this.email: ko.observable(),
-            this.password: ko.observable(),
-            this.message: ko.observable(),
-            this.isloggedIn: ko.observable(false),
-            this.LogginStatus: ko.computed(function(this)
+            email: ko.observable();
+            password: ko.observable();
+            message: ko.observable();
+            isloggedIn: ko.observable(false);
+            LogginStatus: ko.computed(function(this)
             {
             	return this.isloggedIn() ? "Logged in" : "Not logged in";
-            }, this),
+            }, this);
             
             login: function()
             {
                 page.authClient.login('password', { email: this.email(), password: this.password() });
-            },
+            };
             facebookLogin: function()
             {
                 page.authClient.login('facebook');
-            },
+            };
             logout: function()
             {
                 page.authClient.logout();
-            },
+            };
             saveMessage: function(text)
             {
                 //page.firebase.child('text').set({ 'message': this.message() });
-            },
-            messages: ko.observableArray()
+            };
+            messages: ko.observableArray();
         };
 		        
 		$(document).ready(function()
@@ -45,13 +45,13 @@
 			var authClient = new FirebaseAuthClient(firebase, function(error, data) {
 			  if (error) {
 				// an error occurred while attempting login
-				viewModel.isloggedIn(false);
+				page.viewModel.isloggedIn(false);
 
 				console.log(error);
 			  } else if (data) {
 				// user authenticated with Firebase
 				console.log('User ID: ' + data.id + ', Provider: ' + data.provider);
-				viewModel.isloggedIn(true);
+				page.viewModel.isloggedIn(true);
 			  } else {
 				// user is logged out
 			  }
@@ -59,8 +59,9 @@
 			
 			page.authClient = authClient;
 			page.firebase = firebase;
-            
-            ko.applyBindings(viewModel);
+            page.viewModel = new viewModel();
+
+            ko.applyBindings(page.viewModel);
 		});
 		
 		fb.child('Petitions').on('child_added', function(snapshot) 
