@@ -42,6 +42,9 @@
 		        
 		$(document).ready(function()
 		{
+			page.viewModel = new viewModel();
+            ko.applyBindings(page.viewModel);
+
 			var firebase = new Firebase('https://petitionm.firebaseio.com/');
 			var authClient = new FirebaseAuthClient(firebase, function(error, data) {
 			  if (error) {
@@ -55,20 +58,18 @@
 				page.viewModel.isloggedIn(true);
 			  } else {
 				// user is logged out
+				page.viewModel.isloggedIn(false);
 			  }
 			});
+
+			page.authClient = authClient;
+			page.firebase = firebase;
 
 			page.firebase.child('Petitions').on('child_added', function(snapshot) 
 				{
 
 				}
 			);
-			
-			page.authClient = authClient;
-			page.firebase = firebase;
-            page.viewModel = new viewModel();
-
-            ko.applyBindings(page.viewModel);
 		});
 		
 	</script>
@@ -78,12 +79,11 @@
 	</div>
 	
 	<h4>Login status: <span data-bind="value: LogginStatus" /></h4>
-	<br/>
 	<label for="username">Email</label>
-	<input type="text" value="email" data-bind="value: email" />
+	<input type="text" data-bind="value: email" />
 	<br/>
 	<label for="password">Password</label>
-	<input type="text" value="password" data-bind="value: password" />
+	<input type="text" data-bind="value: password" />
 	<br/>
 
 	<input type="button" value="Login" data-bind="click: login" />
