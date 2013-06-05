@@ -72,10 +72,11 @@
 			page.firebase.child('Petitions').on('child_removed', function(snapshot) 
 				{
 					var msgData = snapshot.val();
-					foreach(var petition in page.viewModel.petitions)
+					var petitions = page.viewModel.petitions;
+					for(index = 0; index < petitions.length; ++index)
 					{
-						if (petition.ID == msgData.ID)
-							page.viewModel.petitions.remove(petition);
+						if (petitions[index].ID == msgData.ID)
+							petitions.remove(petitions[index]);
 					}
 				}
 			);
@@ -99,7 +100,7 @@
 	<br/>
 	<h4>Petitions</h4>
 	<ul data-bind="foreach: petitions">
-		<li><h4 data-bind="text: Title"></h4><p data-bind="text: Description"></p><a data-bind="href: URL">more</a></li>
+		<li><h4 data-bind="text: Title"></h4><p data-bind="text: Description"></p><a data-bind="attr: { href: URL }">more</a></li>
 	</ul>
 </body>
 </html>
