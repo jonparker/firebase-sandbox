@@ -65,7 +65,7 @@
 			page.firebase.child('Petitions').on('child_added', function(snapshot) 
 				{
 					var msgData = snapshot.val();
-  					page.viewModel.petitions.push(msgData.child("Title"))
+  					page.viewModel.petitions.push(msgData.Title)
 				}
 			);
 		});
