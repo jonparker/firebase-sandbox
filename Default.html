@@ -65,7 +65,7 @@
             ko.applyBindings(page.viewModel);
 		});
 		
-		fb.child('Petitions').on('child_added', function(snapshot) 
+		page.firebase.child('Petitions').on('child_added', function(snapshot) 
 			{
 
 			}
