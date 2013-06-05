@@ -15,9 +15,9 @@
             password: ko.observable(),
             message: ko.observable(),
             isloggedIn: ko.observable(false),
-            LogginStatus: ko.computed(function()
+            LogginStatus: ko.computed(function(self)
             {
-            	return this.isloggedIn() ? "Logged in" : "Not logged in";
+            	return self.isloggedIn() ? "Logged in" : "Not logged in";
             }),
             
             login: function()
