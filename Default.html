@@ -11,14 +11,15 @@
         
         var viewModel =
         {
-            email: ko.observable(),
-            password: ko.observable(),
-            message: ko.observable(),
-            isloggedIn: ko.observable(false),
-            LogginStatus: ko.computed(function(self)
+        	var self = this;
+            self.email: ko.observable(),
+            self.password: ko.observable(),
+            self.message: ko.observable(),
+            self.isloggedIn: ko.observable(false),
+            self.LogginStatus: ko.computed(function(self)
             {
             	return self.isloggedIn() ? "Logged in" : "Not logged in";
-            }),
+            }, self),
             
             login: function()
             {
