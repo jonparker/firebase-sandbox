@@ -65,7 +65,7 @@
 			page.firebase.child('Petitions').on('child_added', function(snapshot) 
 				{
 					var msgData = snapshot.val();
-  					page.viewModel.petitions.push(msgData.Title)
+  					page.viewModel.petitions.push({ "Title" : msgData.Title, "Description" : msgData.Description, URL: msgData.URL })
 				}
 			);
 		});
@@ -88,7 +88,7 @@
 	<br/>
 	<h4>Petitions</h4>
 	<ul data-bind="foreach: petitions">
-		<li data-bind="text: title"></li>
+		<li><h4 data-bind="text: Title"></h4><p data-bind="text: Description"></p></li>
 	</ul>
 </body>
 </html>
