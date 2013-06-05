@@ -11,32 +11,33 @@
         
         var viewModel = function()
         {
-            email = ko.observable();
-            password = ko.observable();
-            message = ko.observable();
-            isloggedIn = ko.observable(false);
-            LogginStatus = ko.computed(function()
+        	var self = this;
+            self.email = ko.observable();
+            self.password = ko.observable();
+            self.message = ko.observable();
+            self.isloggedIn = ko.observable(false);
+            self.LogginStatus = ko.computed(function()
             {
             	return this.isloggedIn() ? "Logged in" : "Not logged in";
             }, this);
             
-            login = function()
+            self.login = function()
             {
                 page.authClient.login('password', { email: this.email(), password: this.password() });
             };
-            facebookLogin = function()
+            self.facebookLogin = function()
             {
                 page.authClient.login('facebook');
             };
-            logout = function()
+            self.logout = function()
             {
                 page.authClient.logout();
             };
-            saveMessage = function(text)
+            self.saveMessage = function(text)
             {
                 //page.firebase.child('text').set({ 'message': this.message() });
             };
-            messages = ko.observableArray();
+            self.messages = ko.observableArray();
         };
 		        
 		$(document).ready(function()
