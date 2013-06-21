@@ -54,7 +54,76 @@
 		<script type="text/javascript">
 			$(document).ready(function()
 			{
-				
+				var page1 = $("#page1");
+				var page1Next = $("#page1-next");
+
+				var page2 = $("#page2");
+				var page2Next = $("#page2-next");
+				var page2Previous = $("#page2-previous");
+
+				var page3 = $("#page3");
+				var page3Next = $("#page3-next");
+				var page3Previous = $("#page3-previous");
+
+				var page4 = $("#page4");
+				var page4Next = $("#page4-next");
+				var page4Previous = $("#page4-previous");
+
+				var page5 = $("#page5");
+				var page5Previous = $("#page5-previous");
+
+				page2.hide();
+				page3.hide();
+				page4.hide();
+				page5.hide();
+
+				page1Next.click(function()
+				{
+					page1.hide();
+					page2.show();
+				});
+
+				page2Previous.click(function()
+				{
+					page2.hide();
+					page1.show();
+				});
+
+				page2Next.click(function()
+				{
+					page2.hide();
+					page3.show();
+				});
+
+				page3Next.click(function()
+				{
+					page3.hide();
+					page4.show();
+				});
+
+				page3Previous.click(function()
+				{
+					page3.hide();
+					page2.show();
+				});
+
+				page4Next.click(function()
+				{
+					page4.hide();
+					page5.show();
+				});
+
+				page4Previous.click(function()
+				{
+					page4.hide();
+					page3.show();
+				});
+
+				page5Previous.click(function()
+				{
+					page5.hide();
+					page4.show();
+				});
 			});
 		</script>
 	</head>
@@ -72,8 +141,7 @@
 				</div>
 				<div class="row">
 					<div class="span12">
-						<form id="form1" class="form-horizontal">
-
+						<form id="page1" class="form-horizontal">
 							<div class="control-group">
 								<h3>1. Your contact details</h3>
 							</div>
@@ -123,27 +191,31 @@
 								<div class="progress progress-info">
 								  <div class="bar" style="width: 20%"></div>
 								</div>
-								<button class="btn-large btn-primary next-button" type="button">Previous</button>
-								 <button class="btn-large btn-primary next-button" type="button">Next</button>
+								<button id="page1-next" class="btn-large btn-primary next-button" type="button">Next</button>
 							</div>
-						</div>
-						<div>
+						</form>
+
+						<form id="page2" class="form-horizontal">
 							<div class="control-group">
-								<input type="text" class="input-medium" placeholder="Occupation"/>
-								<input type="text" class="input-medium" placeholder="Business Name"/>
+								<h3>2. Medical Questionaire</h3>
 							</div>
-							<div class="control-group">
-								<input type="text" class="input-large" placeholder="Person responsible for payment"/>
+							<div>
+								<div class="control-group">
+									<input type="text" class="input-medium" placeholder="Occupation"/>
+									<input type="text" class="input-medium" placeholder="Business Name"/>
+								</div>
+								<div class="control-group">
+									<input type="text" class="input-large" placeholder="Person responsible for payment"/>
+								</div>
+								<div class="control-group">
+									<input type="text" class="input-xlarge" placeholder="Who is your curent or previous dentist"/>
+								</div>
+								<div class="control-group">
+									<input type="text" class="input-xlarge" placeholder="Who is your medical doctor"/>
+									<input type="text" class="input-medium" placeholder="Phone No"/>
+								</div>
 							</div>
-							<div class="control-group">
-								<input type="text" class="input-xlarge" placeholder="Who is your curent or previous dentist"/>
-							</div>
-							<div class="control-group">
-								<input type="text" class="input-xlarge" placeholder="Who is your medical doctor"/>
-								<input type="text" class="input-medium" placeholder="Phone No"/>
-							</div>
-						</div>
-						<div>
+							<div>
 							<div class="control-group">
 								<label>Do you have Dental Insurance?</label>
 								<div class="btn-group" data-toggle="buttons-radio">
@@ -175,8 +247,24 @@
 						  		<input type="checkbox" id="termsCheckbox" value="terms"> I aggree to the above terms
 							</div>
 							<div class="control-group">
-								 <button class="btn btn-large btn-primary" type="button">Submit</button>
+								<button id="page2-previous" class="btn-large btn-primary next-button" type="button">Previous</button>
+								<button id="page2-next" class="btn-large btn-primary next-button" type="button">Next</button>
 							</div>
+						</form>
+						<form id="page3">
+							<p>Page 3</p>
+							<button id="page3-previous" class="btn-large btn-primary next-button" type="button">Previous</button>
+							<button id="page3-next" class="btn-large btn-primary next-button" type="button">Next</button>
+						</form>
+						<form id="page4">
+							<p>Page 4</p>
+							<button id="page4-previous" class="btn-large btn-primary next-button" type="button">Previous</button>
+							<button id="page4-next" class="btn-large btn-primary next-button" type="button">Next</button>
+						</form>
+						<form id="page5">
+							<p>Page 5</p>
+							<button id="page5-previous" class="btn-large btn-primary next-button" type="button">Previous</button>
+							<button id="page5-submit" class="btn-large btn-primary next-button" type="button">Submit</button>
 						</form>
 					</div>
 				</div>
