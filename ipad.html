@@ -4,107 +4,276 @@
 		<title>Dental Registration Form</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
 
-		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+		<!--<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">-->
+		<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+		<style type="text/css">
+			form
+			{
+				background-color: #666666;
+				padding: 20px;
+			}
+
+			body .well
+			{
+				background-color: #E6E6E6;
+				color: #999999;
+			}
+
+			h2
+			{
+				color: orange;
+				text-align: center;
+				font-family: Georgia;
+			}
+
+			h3
+			{
+				color: #D7D7D7;
+				font-size: 12pt;
+				font-family: Georgia;
+			}
+
+			input[type=text], .btn
+			{
+				min-height: 30px;
+			}
+
+			.header
+			{
+				text-align: center;
+			}
+
+			.next-button
+			{
+				width: 250px;
+				background-color: orange;
+			}
+		</style>
 		<script src="http://code.jquery.com/jquery.js"></script>
 		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function()
 			{
-				var nameDiv = $("#name");
-				$("<span class='label label-warning'>Last name is required</span>").appendTo(nameDiv);
+				$("#dob-date a").click(function()
+				{
+					var date= $(this).text();
+					DobDate(date);
+				});
+
+				$("#dob-month a").click(function()
+				{
+					var month = $(this).text();
+					DobMonth(month);
+				});
+
+				$("#state li a").click(function()
+				{
+					var state = $(this).text();
+					State(state);
+				});
 			});
+
+			function DobDate(date)
+			{
+				$("#dob-day").val(date);
+			}
+
+			function DobMonth(month)
+			{
+				$("#dob-month-text").val(month);
+			}
+
+			function State(state)
+			{
+				$("#state-text").val(state);
+			}
 		</script>
 	</head>
 	<body>
-		<div id="form">
-			<div class="row">
-				<div class="span12"><h2>Dental Registration Form</h2></div>
-				<div class="span12"><p>Please answer all questions. All information is strictly confidential.</p></div>
-			</div>
-			<div class="row">
-				<div class="span12">
-					<form id="form1" class="form-horizontal">
-						<div class="control-group" id="name">
-							<input type="text" class="input-small" placeholder="Title"/>
-							<input type="text" class="input-medium" placeholder="First name"/>
-							<input type="text" class="input-small" placeholder="Middle initial"/>
-							<input type="text" class="input-medium" placeholder="Last name"/>
-						</div>
-						<div class="control-group">
-							<input type="text" class="input-medium" placeholder="Address"/>
-							<input type="text" class="input-medium" placeholder="Suburb"/>
-							<input type="text" class="input-small" placeholder="Post code"/>
-						</div>
-						<div class="control-group">
-							<input type="text" class="input-small" placeholder="Date of birth"/>
-							<input type="text" class="input-medium" placeholder="Home phone No"/>
-							<input type="text" class="input-medium" placeholder="Mobile No"/>
-							<input type="text" class="input-medium" placeholder="Work No"/>
-						</div>
-						<div class="control-group">
-							<input type="text" class="input-large" placeholder="Email address"/>
-							<input type="text" class="input-medium" placeholder="Occupation"/>
-							<input type="text" class="input-medium" placeholder="Business Name"/>
-						</div>
-						<div class="control-group">
-							<input type="text" class="input-large" placeholder="Emergency Contact Name"/>
-							<input type="text" class="input-medium" placeholder="Phone No"/>
-						</div>
-						<div class="control-group">
-							<input type="text" class="input-large" placeholder="Person responsible for payment"/>
-						</div>
-						<div class="control-group">
-							<input type="text" class="input-xlarge" placeholder="Who is your curent or previous dentist"/>
-						</div>
-						<div class="control-group">
-							<input type="text" class="input-xlarge" placeholder="Who is your medical doctor"/>
-							<input type="text" class="input-medium" placeholder="Phone No"/>
-						</div>
-						<div class="control-group">
-							</label>
-							 Do you have Dental Insurance?
-							<label class="radio">
-							  <input type="radio" name="insuranceRadios" id="optionsRadios1" value="yes" checked>
-							  Yes
-							</label>
-							<label class="radio">
-							  <input type="radio" name="insuranceRadios" id="optionsRadios2" value="no">
-							  No
-							</label>
-						</div>
-						<div class="control-group">
-							</label>
-							 Which Health Fund?
-							<label class="radio">
-							  <input type="radio" name="insuranceRadios" id="optionsRadios3" value="au" checked>
-							  Australian Unity
-							</label>
-							<div class="input-append">
-								<label class="radio">
-								  <input type="radio" name="insuranceRadios" id="optionsRadios4" value="other">
-								  Other
-								</label>
-								<input type="text" class="input-large" placeholder="Other"/>
+		<div class="well">
+			<div id="form">
+				<div class="row">
+					<div class="span12"><h2>Dental Registration Form</h2></div>
+				</div>
+
+				<div class="row">
+					<div class="span12">
+						<p class="header">Please answer all questions. All information is strictly confidential.</p>
+					</div>
+				</div>
+				<!--<div class="row">
+					<div class="span12">
+						<p>Fields marked with <i class="icon-exclamation-sign"></i> are required.</p>
+					</div>
+				</div>-->
+				
+				<div class="row">
+					<div class="span12">
+						<form id="form1" class="form-horizontal">
+
+							<div class="control-group">
+								<h3>1. Your contact details</h3>
+							</div>
+							<div class="control-group" id="name">
+								<input type="text" id="firstname" class="input-large" placeholder="First name *"/>
+								<input type="text" class="input-small" placeholder="Initial"/>
+								<input type="text" class="input-large" placeholder="Last name *"/>
+							</div>
+							<div class="control-group">
+								<input type="text" class="input-xxlarge" placeholder="Street address *"/>
+							</div>
+							<div class="control-group">
+								<input type="text" class="input-xlarge" placeholder="Suburb *"/>
+								<div class="btn-group">
+									<button class="btn dropdown-toggle" data-toggle="dropdown">State</button>
+									<ul class="dropdown-menu" id="state">
+										<li><a href="#">VIC</a></li>
+										<li><a href="#">NSW</a></li>
+										<li><a href="#">NSW</a></li>
+										<li><a href="#">QLD</a></li>
+										<li><a href="#">TAS</a></li>
+										<li><a href="#">WA</a></li>
+										<li><a href="#">SA</a></li>
+										<li><a href="#">NT</a></li>
+									</ul>
+								</div>
+								<input type="text" class="input-small" id="state-text" placeholder="State"/>
+								<input type="text" class="input-small" placeholder="Post code"/>
+							</div>
+							<div class="control-group">
+								<label>Date of birth</label>
+								<div class="btn-group">
+									<button class="btn dropdown-toggle" data-toggle="dropdown">Day</button>
+									<ul class="dropdown-menu" id="dob-date">
+										<li><a href="#">1</a></li>
+										<li><a href="#">2</a></li>
+										<li><a href="#">3</a></li>
+										<li><a href="#">4</a></li>
+										<li><a href="#">5</a></li>
+										<li><a href="#">6</a></li>
+										<li><a href="#">7</a></li>
+										<li><a href="#">8</a></li>
+										<li><a href="#">9</a></li>
+										<li><a href="#">10</a></li>
+										<li><a href="#">11</a></li>
+										<li><a href="#">12</a></li>
+										<li><a href="#">13</a></li>
+										<li><a href="#">14</a></li>
+										<li><a href="#">15</a></li>
+										<li><a href="#">16</a></li>
+										<li><a href="#">17</a></li>
+										<li><a href="#">18</a></li>
+										<li><a href="#">19</a></li>
+										<li><a href="#">20</a></li>
+										<li><a href="#">21</a></li>
+										<li><a href="#">22</a></li>
+										<li><a href="#">23</a></li>
+										<li><a href="#">24</a></li>
+										<li><a href="#">25</a></li>
+										<li><a href="#">26</a></li>
+										<li><a href="#">27</a></li>
+										<li><a href="#">28</a></li>
+										<li><a href="#">29</a></li>
+										<li><a href="#">30</a></li>
+										<li><a href="#">31</a></li>
+	  								</ul>
+	  							</div>
+								<input type="text" class="input-medium" id="dob-day" placeholder="1"/>
+								<div class="btn-group">
+									<button class="btn dropdown-toggle" data-toggle="dropdown">Month</button>
+									<ul class="dropdown-menu" id="dob-month">
+										<li><a href="#">Jan</a></li>
+										<li><a href="#">Feb</a></li>
+										<li><a href="#">Mar</a></li>
+										<li><a href="#">Apr</a></li>
+										<li><a href="#">May</a></li>
+										<li><a href="#">Jun</a></li>
+										<li><a href="#">Jul</a></li>
+										<li><a href="#">Aug</a></li>
+										<li><a href="#">Sep</a></li>
+										<li><a href="#">Oct</a></li>
+										<li><a href="#">Nov</a></li>
+										<li><a href="#">Dec</a></li>
+	  								</ul>
+	  							</div>
+								<input type="text" class="input-small" id="dob-month-text" placeholder="Jan"/>
+								<input type="text" class="input-medium" placeholder="1980"/>
+							</div>
+							<input type="radio">
+							</input>
+							<div class="control-group">
+								<input type="text" class="input-xlarge" placeholder="Mobile No"/>
+								<input type="text" class="input-xlarge" placeholder="Home phone No"/>
+							</div>
+							<div class="control-group">
+								<input type="text" class="input-xlarge" placeholder="Work No"/>
+								<input type="text" class="input-xlarge" placeholder="Email address"/>
+							</div>
+							<div class="control-group">
+								<input type="text" class="input-xlarge" placeholder="Emergency Contact Name"/>
+								<input type="text" class="input-xlarge" placeholder="Emergency contact number"/>
+							</div>
+							
+							<div class="control-group">
+								<div class="progress progress-info">
+								  <div class="bar" style="width: 20%"></div>
+								</div>
+								<button class="btn-large btn-primary next-button" type="button">Previous</button>
+								 <button class="btn-large btn-primary next-button" type="button">Next</button>
 							</div>
 						</div>
-						<div class="control-group">
-							<input type="text" class="input-large" placeholder="Membership number"/>
-							<input type="text" class="input-medium" placeholder="Level of Cover"/>
-							<span class="help-inline">(if known)</span>
+						<div>
+							<div class="control-group">
+								<input type="text" class="input-medium" placeholder="Occupation"/>
+								<input type="text" class="input-medium" placeholder="Business Name"/>
+							</div>
+							<div class="control-group">
+								<input type="text" class="input-large" placeholder="Person responsible for payment"/>
+							</div>
+							<div class="control-group">
+								<input type="text" class="input-xlarge" placeholder="Who is your curent or previous dentist"/>
+							</div>
+							<div class="control-group">
+								<input type="text" class="input-xlarge" placeholder="Who is your medical doctor"/>
+								<input type="text" class="input-medium" placeholder="Phone No"/>
+							</div>
 						</div>
 						<div>
-							<h4>TERMS: STRICTLY PAYMENT ON THE DAY, PLEASE</h4>
-							<p>
-								"I acknowledge that the personal information collected from me by Australian Unity Health Care Limited ("Australian Unity") is collected for the purpose of allowing Australian Unity to provide services to me, and that if I do not provide relevant information, Australian Unity may be unable to provide these services. I acknowledge that my information may be disclosed in part or full in accordance with statutory requirements, including disclosure to government and health organisations. I acknowledge that I am aware that I have rights to access my personal information held by Australian Unity in accordance with the National Privacy Principles".
-							</p>
-						</div>
-						<div class="control-group">
-					  		<input type="checkbox" id="termsCheckbox" value="terms"> I aggree to the above terms
-						</div>
-						<div class="control-group">
-							 <button class="btn btn-large btn-primary" type="button">Submit</button>
-						</div>
-					</form>
+							<div class="control-group">
+								<label>Do you have Dental Insurance?</label>
+								<div class="btn-group" data-toggle="buttons-radio">
+									<button type="button" class="btn btn-primary">Yes</button>
+							  		<button type="button" class="btn btn-primary">No</button>
+								</div>
+							</div>
+							<div class="control-group">
+								<label>Which Health Fund?</label>
+								<div class="btn-group" data-toggle="buttons-radio">
+								  <button type="button" class="btn btn-primary">Australian Unity</button>
+								  <button type="button" class="btn btn-primary">Other</button>
+								</div>
+									<input type="text" class="input-large" placeholder="Other"/>
+								</div>
+							</div>
+							<div class="control-group">
+								<input type="text" class="input-large" placeholder="Membership number"/>
+								<input type="text" class="input-medium" placeholder="Level of Cover"/>
+								<span class="help-inline">(if known)</span>
+							</div>
+							<div class="control-group">
+								<h4>TERMS: STRICTLY PAYMENT ON THE DAY, PLEASE</h4>
+								<p>
+									"I acknowledge that the personal information collected from me by Australian Unity Health Care Limited ("Australian Unity") is collected for the purpose of allowing Australian Unity to provide services to me, and that if I do not provide relevant information, Australian Unity may be unable to provide these services. I acknowledge that my information may be disclosed in part or full in accordance with statutory requirements, including disclosure to government and health organisations. I acknowledge that I am aware that I have rights to access my personal information held by Australian Unity in accordance with the National Privacy Principles".
+								</p>
+							</div>
+							<div class="control-group">
+						  		<input type="checkbox" id="termsCheckbox" value="terms"> I aggree to the above terms
+							</div>
+							<div class="control-group">
+								 <button class="btn btn-large btn-primary" type="button">Submit</button>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
