@@ -33,7 +33,7 @@
 				font-family: Georgia;
 			}
 
-			input[type=text], .btn
+			input[type=text], input[type=email], input[type=tel], input[type=date], input[type=number], .btn
 			{
 				min-height: 30px;
 			}
@@ -54,39 +54,8 @@
 		<script type="text/javascript">
 			$(document).ready(function()
 			{
-				$("#dob-date a").click(function()
-				{
-					var date= $(this).text();
-					DobDate(date);
-				});
-
-				$("#dob-month a").click(function()
-				{
-					var month = $(this).text();
-					DobMonth(month);
-				});
-
-				$("#state li a").click(function()
-				{
-					var state = $(this).text();
-					State(state);
-				});
+				
 			});
-
-			function DobDate(date)
-			{
-				$("#dob-day").val(date);
-			}
-
-			function DobMonth(month)
-			{
-				$("#dob-month-text").val(month);
-			}
-
-			function State(state)
-			{
-				$("#state-text").val(state);
-			}
 		</script>
 	</head>
 	<body>
@@ -101,12 +70,6 @@
 						<p class="header">Please answer all questions. All information is strictly confidential.</p>
 					</div>
 				</div>
-				<!--<div class="row">
-					<div class="span12">
-						<p>Fields marked with <i class="icon-exclamation-sign"></i> are required.</p>
-					</div>
-				</div>-->
-				
 				<div class="row">
 					<div class="span12">
 						<form id="form1" class="form-horizontal">
