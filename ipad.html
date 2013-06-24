@@ -38,6 +38,18 @@
 				min-height: 30px;
 			}
 
+			.progress .bar
+			{
+				background-color: orange;
+				background-image: linear-gradient(to bottom, #F29B23, #F2AE23);
+			}
+
+			.btn-primary
+			{
+				background-color: orange;
+				background-image: linear-gradient(to bottom, #F29B23, #F2AE23);
+			}
+
 			.header
 			{
 				text-align: center;
@@ -47,6 +59,12 @@
 			{
 				width: 250px;
 				background-color: orange;
+			}
+
+			.row
+			{
+				margin-top: 3px;
+				margin-bottom: 3px;
 			}
 		</style>
 		<script src="http://code.jquery.com/jquery.js"></script>
@@ -59,7 +77,7 @@
 
 				var page2 = $("#page2");
 				var page2Next = $("#page2-next");
-				var page2Previous = $("#page2-previous");
+				
 
 				var page3 = $("#page3");
 				var page3Next = $("#page3-next");
@@ -70,23 +88,23 @@
 				var page4Previous = $("#page4-previous");
 
 				var page5 = $("#page5");
+				var page5Next = $("#page5-next");
 				var page5Previous = $("#page5-previous");
 
+				var page6 = $("#page6");
+				var page6Previous = $("#page6-previous");
+
+				page1.hide();
 				page2.hide();
 				page3.hide();
-				page4.hide();
+				//page4.hide();
 				page5.hide();
+				page6.hide();
 
 				page1Next.click(function()
 				{
 					page1.hide();
 					page2.show();
-				});
-
-				page2Previous.click(function()
-				{
-					page2.hide();
-					page1.show();
 				});
 
 				page2Next.click(function()
@@ -124,6 +142,18 @@
 					page5.hide();
 					page4.show();
 				});
+
+				page5Next.click(function()
+				{
+					page5.hide();
+					page6.show();
+				});
+
+				page6Previous.click(function()
+				{
+					page6.hide();
+					page5.show();
+				})
 			});
 		</script>
 	</head>
@@ -139,7 +169,29 @@
 						<p class="header">Please answer all questions. All information is strictly confidential.</p>
 					</div>
 				</div>
+				
 				<form id="page1" class="form-horizontal">
+					<div class="row">
+						<div class="span12">
+							<div class="control-group text-center" id="name">
+								<label>Please select the clinic you are attending</label>
+								<select>
+									<option selected="selected">Melbourne</option>
+									<option>South Melbourne</option>
+									<option>Box Hill</option>
+									<option>Rowville</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span12 text-center">
+							<button id="page1-next" class="btn-large btn-primary next-button" type="button">Next</button>
+						</div>
+					</div>
+				</form>
+
+				<form id="page2" class="form-horizontal">
 					<div class="row">
 						<div class="span12">
 							<div class="control-group">
@@ -191,13 +243,13 @@
 								<div class="progress progress-info">
 								  <div class="bar" style="width: 20%"></div>
 								</div>
-								<button id="page1-next" class="btn-large btn-primary next-button" type="button">Next</button>
+								<button id="page2-next" class="btn-large btn-primary next-button" type="button">Next</button>
 							</div>
 						</div>
 					</div>
 				</form>
 
-				<form id="page2" class="form-horizontal">
+				<form id="page3" class="form-horizontal">
 					<div class="row">
 						<div class="span12">
 							<div class="control-group">
@@ -246,13 +298,13 @@
 								<div class="progress progress-info">
 								  <div class="bar" style="width: 40%"></div>
 								</div>
-								<button id="page2-previous" class="btn-large btn-primary next-button" type="button">Previous</button>
-								<button id="page2-next" class="btn-large btn-primary next-button" type="button">Next</button>
+								<button id="page3-previous" class="btn-large btn-primary next-button" type="button">Previous</button>
+								<button id="page3-next" class="btn-large btn-primary next-button" type="button">Next</button>
 							</div>
 						</div>
 					</div>
 				</form>
-				<form id="page3">
+				<form id="page4">
 					<div class="row">
 						<div class="span12">
 							<div class="control-group">
@@ -574,6 +626,58 @@
 						</div>
 					</div>
 					<div class="row">
+						<div class="span4">
+							<div class="control-group">
+								<label>Do you have heart disease / coronary artery disease</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="control-group">
+								<label>Do you smoke</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+						
+					</div>
+					<div class="row">
+						<div class="span4">
+							<div class="control-group">
+								<label>If you smoke please specify the type</label>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Cigarettes</button>
+							  <button type="button" class="btn btn-primary active">Cigars</button>
+							  <button type="button" class="btn btn-primary active">Pipes</button>
+							  <button type="button" class="btn btn-primary active">Other</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span4">
+							<div class="control-group">
+								<label>If you smoke please specify for how long</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <input type="text" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
 						<div class="span10">
 							<div class="control-group">
 								<label>I have private and confidential medical matters that I wish to discuss with the dentist</label>
@@ -597,13 +701,13 @@
 								<div class="progress progress-info">
 									  <div class="bar" style="width: 60%"></div>
 								</div>
-								<button id="page3-previous" class="btn-large btn-primary next-button" type="button">Previous</button>
-								<button id="page3-next" class="btn-large btn-primary next-button" type="button">Next</button>
+								<button id="page4-previous" class="btn-large btn-primary next-button" type="button">Previous</button>
+								<button id="page4-next" class="btn-large btn-primary next-button" type="button">Next</button>
 							</div>
 						</div>
 					</div>
 				</form>
-				<form id="page4">
+				<form id="page5">
 					<div class="row">
 						<div class="span12">
 							<div class="control-group">
@@ -613,13 +717,13 @@
 								<div class="progress progress-info">
 								  <div class="bar" style="width: 80%"></div>
 								</div>
-								<button id="page4-previous" class="btn-large btn-primary next-button" type="button">Previous</button>
-								<button id="page4-next" class="btn-large btn-primary next-button" type="button">Next</button>
+								<button id="page5-previous" class="btn-large btn-primary next-button" type="button">Previous</button>
+								<button id="page5-next" class="btn-large btn-primary next-button" type="button">Next</button>
 							</div>
 						</div>
 					</div>
 				</form>
-				<form id="page5">
+				<form id="page6">
 					<div class="row">
 						<div class="span12">
 							<div class="control-group">
@@ -638,8 +742,8 @@
 								<div class="progress progress-info">
 								  <div class="bar" style="width: 100%"></div>
 								</div>
-								<button id="page5-previous" class="btn-large btn-primary next-button" type="button">Previous</button>
-								<button id="page5-submit" class="btn-large btn-primary next-button" type="button">Submit</button>
+								<button id="page6-previous" class="btn-large btn-primary next-button" type="button">Previous</button>
+								<button id="page6-submit" class="btn-large btn-primary next-button" type="button">Submit</button>
 							</div>
 						</div>
 					</div>
