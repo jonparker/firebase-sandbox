@@ -4,6 +4,7 @@
 		<title>Dental Registration Form</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
 		<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="/css/bootstrapSwitch.css" rel="stylesheet">
 		<style type="text/css">
 			form
 			{
@@ -70,9 +71,21 @@
 			{
 				width: 500px;
 			}
+
+			.icon-orange
+			{
+				background-color: #F28023;
+			}
+
+			.has-switch span.switch-left, .has-switch:hover span.switch-left:hover
+			{
+				background-color: #F28023;
+				background-image: none;
+			}
 		</style>
 		<script src="http://code.jquery.com/jquery.js"></script>
 		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="/js/bootstrapSwitch.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			$(document).ready(function()
 			{
@@ -98,11 +111,12 @@
 				var page6 = $("#page6");
 				var page6Previous = $("#page6-previous");
 
+				page1.hide();
 				page2.hide();
 				page3.hide();
 				page4.hide();
 				page5.hide();
-				page6.hide();
+				//page6.hide();
 
 				page1Next.click(function()
 				{
@@ -1127,14 +1141,28 @@
 								<h3>5. Dental Questionaire Part 2</h3>
 							</div>
 							<div class="control-group">
+								<p>
+									We thank you for taking the time to fill out this form, and for giving us the opportunity to look after you. We will endeavour to provide you with the best care, skill and judgement.  Please read the statement below before submitting.
+								</p>
 								<h4>TERMS: STRICTLY PAYMENT ON THE DAY, PLEASE</h4>
 								<p>
 									"I acknowledge that the personal information collected from me by Australian Unity Health Care Limited ("Australian Unity") is collected for the purpose of allowing Australian Unity to provide services to me, and that if I do not provide relevant information, Australian Unity may be unable to provide these services. I acknowledge that my information may be disclosed in part or full in accordance with statutory requirements, including disclosure to government and health organisations. I acknowledge that I am aware that I have rights to access my personal information held by Australian Unity in accordance with the National Privacy Principles".
 								</p>
+								<p>
+									"In signing this form I acknowledge that this represents an accurate medical and dental history. I will advise my dentist of any changes in the future."
+								</p>
 							</div>
-							<div class="control-group">
-						  		<input type="checkbox" id="termsCheckbox" value="terms"> I aggree to the above terms
+						</div>
+					</div>
+					<div class="row">
+						<div class="span12">
+							<div class="switch" data-on-label="<i class='icon-ok icon-white icon-orange'></i>" data-off-label="<i class='icon-remove'></i>">
+							    <input type="checkbox" />
 							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span12">		
 							<div class="control-group">
 								<div class="progress progress-info">
 								  <div class="bar" style="width: 100%"></div>
