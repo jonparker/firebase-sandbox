@@ -101,6 +101,26 @@
 			}
 		</script>
 		<script type="text/javascript">
+			var registrationForm = function(pages)
+			{
+				this.pages = pages;
+				this.showPage = function(pageNum)
+				{
+					var pageCount = this.pages.length;
+					for(var i = 1; i <= pageCount; i++)
+					{
+						if (i == pageNum)
+						{
+							this.pages[i - 1].show();
+						}
+						else
+						{
+							this.pages[i - 1].hide();
+						}
+					}
+				};
+			}
+
 			$(document).ready(function()
 			{
 				var page1 = $("#page1");
@@ -109,7 +129,6 @@
 				var page2 = $("#page2");
 				var page2Next = $("#page2-next");
 				
-
 				var page3 = $("#page3");
 				var page3Next = $("#page3-next");
 				var page3Previous = $("#page3-previous");
@@ -128,12 +147,14 @@
 				var clinicQueryString = getParameterByName("clinic");
 				var clinicSelection = $("#clinic");
 
-				page2.hide();
+				var pages = [page1, page2, page3, page4, page5, page6];
+				var regForm = new registrationForm(pages);
+
+				regForm.showPage(1);
 
 				if (clinicQueryString != undefined && clinicQueryString != "")
 				{
-					page1.hide();
-					page2.show();
+					regForm.showPage(2);
 
 					switch(clinicQueryString)
 					{
@@ -150,68 +171,53 @@
 							clinicSelection.val("rowville");
 							break;
 						default:
-							page1.show();
-							page2.hide();
+							regForm.showPage(1);
 					}
 				}
 				
-				page3.hide();
-				page4.hide();
-				page5.hide();
-				page6.hide();
-
 				page1Next.click(function()
 				{
-					page1.hide();
-					page2.show();
+					regForm.showPage(2);
 				});
 
 				page2Next.click(function()
 				{
-					page2.hide();
-					page3.show();
+					regForm.showPage(3);
 				});
 
 				page3Next.click(function()
 				{
-					page3.hide();
-					page4.show();
+					regForm.showPage(4);
 				});
 
 				page3Previous.click(function()
 				{
-					page3.hide();
-					page2.show();
+					regForm.showPage(2);
 				});
 
 				page4Next.click(function()
 				{
-					page4.hide();
-					page5.show();
+					regForm.showPage(5);
 				});
 
 				page4Previous.click(function()
 				{
-					page4.hide();
-					page3.show();
+					regForm.showPage(3);
 				});
 
 				page5Previous.click(function()
 				{
-					page5.hide();
-					page4.show();
+					regForm.showPage(4);
 				});
 
 				page5Next.click(function()
 				{
-					page5.hide();
-					page6.show();
+					regForm.showPage(6);
 				});
 
 				page6Previous.click(function()
 				{
-					page6.hide();
-					page5.show();
+					regForm.showPage(5);
 				})
 			});
 		</script>
