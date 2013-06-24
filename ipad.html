@@ -101,16 +101,28 @@
 			}
 		</script>
 		<script type="text/javascript">
+			var currentPageNum = 1;
+
 			var registrationForm = function(pages)
 			{
 				this.pages = pages;
 				this.showPage = function(pageNum)
+				{
+					this.showPageInternal(pageNum, true);
+				};
+				this.showPageInternal = function(pageNum, pushState)
 				{
 					var pageCount = this.pages.length;
 					for(var i = 1; i <= pageCount; i++)
 					{
 						if (i == pageNum)
 						{
+							if (pushState)
+							{
+								window.history.pushState(pageNum, "Dental Registration Form Page " + pageNum, "#" + pageNum);
+								console.log("Save current page number: " + pageNum);
+								currentPageNum = pageNum;
+							}
 							this.pages[i - 1].show();
 						}
 						else
@@ -118,6 +130,10 @@
 							this.pages[i - 1].hide();
 						}
 					}
+				};
+				this.showPreviousPage = function(pageNum)
+				{
+					this.showPageInternal(pageNum, false);
 				};
 			}
 
@@ -149,6 +165,15 @@
 
 				var pages = [page1, page2, page3, page4, page5, page6];
 				var regForm = new registrationForm(pages);
+
+				window.onpopstate = function(args)
+				{
+					if (args.state != null)
+					{
+						regForm.showPreviousPage(args.state);
+						console.log("Go back to page number: " + args.state);
+					}
+				}
 
 				regForm.showPage(1);
 
