@@ -3,8 +3,6 @@
 	<head>
 		<title>Dental Registration Form</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
-
-		<!--<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">-->
 		<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
 		<style type="text/css">
 			form
@@ -100,11 +98,9 @@
 				var page6 = $("#page6");
 				var page6Previous = $("#page6-previous");
 
-				//todo: remove
-				page1.hide();
 				page2.hide();
 				page3.hide();
-				//page4.hide();
+				page4.hide();
 				page5.hide();
 				page6.hide();
 
@@ -844,6 +840,276 @@
 							<div class="control-group">
 								<h3>4. Dental Questionaire Part 1</h3>
 							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span3">
+							<div class="control-group">
+								<label>How would you describe your dental health</label>
+							</div>
+						</div>
+						<div class="span3">
+							<div class="btn-group" data-toggle="buttons-radio">
+								<button type="button" class="btn btn-primary">Excellent</button>
+								<button type="button" class="btn btn-primary active">Good</button>
+								<button type="button" class="btn btn-primary active">Fair</button>
+								<button type="button" class="btn btn-primary active">Poor</button>
+							</div>
+						</div>
+						<div class="span3">
+							<div class="control-group">
+								<label>What do you use to clean your teeth at home</label>
+							</div>
+						</div>
+						<div class="span3">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Brush</button>
+							  <button type="button" class="btn btn-primary active">Floss</button>
+							  <button type="button" class="btn btn-primary active">Mouth rinse</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span3">
+							<div class="control-group">
+								<label>What type of toothbrush do you use</label>
+							</div>
+						</div>
+						<div class="span3">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Hard</button>
+							  <button type="button" class="btn btn-primary active">Medium</button>
+							  <button type="button" class="btn btn-primary active">Soft</button>
+							</div>
+						</div>
+						<div class="span3">
+							<div class="control-group">
+								<label>When was your last dental check up</label>
+							</div>
+						</div>
+						<div class="span3">
+							<input type="date"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span3">
+							<div class="control-group">
+								<label>When were your last dental x-rays taken</label>
+							</div>
+						</div>
+						<div class="span3">
+							<input type="date"/>
+						</div>
+						<div class="span4">
+							<div class="control-group">
+								<label>Have you ever had orthodontic (braces) treatment</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span4">
+							<div class="control-group">
+								<label>Are your teeth sensitive to hot or cold</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="control-group">
+								<label>Do you clench or grind your teeth</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span4">
+							<div class="control-group">
+								<label>Do you get food trapped between your teeth</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="control-group">
+								<label>Do you get clicking or pain in your jaw</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span4">
+							<div class="control-group">
+								<label>Do your gums bleed</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="control-group">
+								<label>Do you get bad taste or bad breath</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span4">
+							<div class="control-group">
+								<label>Do you get mouth ulcers</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="control-group">
+								<label>Would the loss of a tooth or teeth disturb you</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span4">
+							<div class="control-group">
+								<label>Have you ever had a bad experience at the dentist</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span12">
+							<h4>Cosmetic Evaluation</h4>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span4">
+							<div class="control-group">
+								<label>Are you happy with the appearance of your teeth</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="control-group">
+								<label>Are you happy with your smile</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span4">
+							<div class="control-group">
+								<label>Would you like to have whiter teeth</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="control-group">
+								<label>Would you like an explanation regarding fresh breath therapy</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span4">
+							<div class="control-group">
+								<label>Do you have existing amalgam fillings that you want to replace with white ones</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="control-group">
+								<label>Would you like straighter teeth</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span6">
+							<div class="control-group">
+								<label>What is the purpose of your visit</label>
+							</div>
+						</div>
+						<div class="span6">
+							<textarea rows="5" columns="50" class="text-multiline"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span12">
 							<div class="control-group">
 								<div class="progress progress-info">
 								  <div class="bar" style="width: 80%"></div>
