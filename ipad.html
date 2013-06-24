@@ -66,6 +66,11 @@
 				margin-top: 3px;
 				margin-bottom: 3px;
 			}
+
+			.text-multiline
+			{
+				width: 500px;
+			}
 		</style>
 		<script src="http://code.jquery.com/jquery.js"></script>
 		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
@@ -94,6 +99,7 @@
 				var page6 = $("#page6");
 				var page6Previous = $("#page6-previous");
 
+				//todo: remove
 				page1.hide();
 				page2.hide();
 				page3.hide();
@@ -648,7 +654,6 @@
 							  <button type="button" class="btn btn-primary active">No</button>
 							</div>
 						</div>
-						
 					</div>
 					<div class="row">
 						<div class="span4">
@@ -673,12 +678,35 @@
 						</div>
 						<div class="span2">
 							<div class="btn-group" data-toggle="buttons-radio">
-							  <input type="text" />
+							  <input type="text" class="input-medium" />
+							</div>
+						</div>
+						<div class="span4">
+							<div class="control-group">
+								<label>How much do you smoke per day</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <input type="text" class="input-medium" />
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="span10">
+						<div class="span4">
+							<div class="control-group">
+								<label>Did you know that if you smoke, you have more problems with gum disease and their treatments and have a higher risk of losing dental implants</label>
+							</div>
+						</div>
+						<div class="span2">
+							<div class="btn-group" data-toggle="buttons-radio">
+							  <button type="button" class="btn btn-primary">Yes</button>
+							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span4">
 							<div class="control-group">
 								<label>I have private and confidential medical matters that I wish to discuss with the dentist</label>
 							</div>
@@ -687,6 +715,51 @@
 							<div class="btn-group" data-toggle="buttons-radio">
 							  <button type="button" class="btn btn-primary">Yes</button>
 							  <button type="button" class="btn btn-primary active">No</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span6">
+							<div class="control-group">
+								<label>Please list any medications or drugs, including aspirin, bisphosphonate, hormone replacement therapy, vitamins, herbal, naturopathic or 'over the counter' remedies you are taking</label>
+							</div>
+						</div>
+						<div class="span6">
+							<textarea placeholder="List medical conditions here" class="text-multiline" columns="20" rows="5" ></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span4">
+							<div class="control-group">
+								<label>Please indicate which of the following you are allergic to</label>
+							</div>
+						</div>
+						<div class="span8">
+							<div class="btn-group" data-toggle="buttons-checkbox">
+							  	<button type="button" class="btn btn-primary">Penicillin</button>
+								<button type="button" class="btn btn-primary">Aspirin</button>
+								<button type="button" class="btn btn-primary">Tetracycline</button>
+								<button type="button" class="btn btn-primary">Erythromycin</button>
+								<button type="button" class="btn btn-primary">Keflex</button>
+								<button type="button" class="btn btn-primary">Xylocaine</button>
+								<button type="button" class="btn btn-primary">Valium</button>
+								<button type="button" class="btn btn-primary">Morphine</button>
+								<button type="button" class="btn btn-primary">Novocaine</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span4">
+						</div>
+						<div class="span8">
+							<div class="btn-group" data-toggle="buttons-checkbox">
+							  	<button type="button" class="btn btn-primary">Codeine</button>
+								<button type="button" class="btn btn-primary">Duranest</button>
+								<button type="button" class="btn btn-primary">Foods</button>
+								<button type="button" class="btn btn-primary">Latex</button>
+								<button type="button" class="btn btn-primary">Chlorine</button>
+								<button type="button" class="btn btn-primary">Other</button>
+								<button type="button" class="btn btn-primary">Antiseptics or chemicals</button>
 							</div>
 						</div>
 					</div>
