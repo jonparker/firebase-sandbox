@@ -87,6 +87,14 @@
 		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 		<script src="/js/bootstrapSwitch.js" type="text/javascript"></script>
 		<script type="text/javascript">
+			function getParameterByName(name) {
+			    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+			    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+			        results = regex.exec(location.search);
+			    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+			}
+		</script>
+		<script type="text/javascript">
 			$(document).ready(function()
 			{
 				var page1 = $("#page1");
@@ -111,12 +119,40 @@
 				var page6 = $("#page6");
 				var page6Previous = $("#page6-previous");
 
-				page1.hide();
+				var clinicQueryString = getParameterByName("clinic");
+				var clinicSelection = $("#clinic");
+
 				page2.hide();
+
+				if (clinicQueryString != undefined && clinicQueryString != "")
+				{
+					page1.hide();
+					page2.show();
+
+					switch(clinicQueryString)
+					{
+						case "melbourne":
+							clinicSelection.val("melbourne");
+							break;
+						case "southmelbourne":
+							clinicSelection.val("south-melbourne");
+							break;
+						case "boxhill":
+							clinicSelection.val("box-hill");
+							break;
+						case "rowville":
+							clinicSelection.val("rowville");
+							break;
+						default:
+							page1.show();
+							page2.hide();
+					}
+				}
+				
 				page3.hide();
 				page4.hide();
 				page5.hide();
-				//page6.hide();
+				page6.hide();
 
 				page1Next.click(function()
 				{
@@ -192,11 +228,11 @@
 						<div class="span12">
 							<div class="control-group text-center" id="name">
 								<label>Please select the clinic you are attending</label>
-								<select>
-									<option selected="selected">Melbourne</option>
-									<option>South Melbourne</option>
-									<option>Box Hill</option>
-									<option>Rowville</option>
+								<select id="clinic">
+									<option value="melbourne" selected="selected">Melbourne</option>
+									<option value="south-melbourne">South Melbourne</option>
+									<option value="box-hill">Box Hill</option>
+									<option value="rowville">Rowville</option>
 								</select>
 							</div>
 						</div>
